@@ -1,0 +1,364 @@
+:root {
+  --theme: rgb(35, 35, 35);
+  --color-bg: initial;
+  --logomark: url("../pics/logomark-white.png");
+  --logomark-d: url("../pics/logomark-black.png");
+  --background-doodle: url("../pics/doodle-dark.png");
+  --logo-size: 3rem;
+  --ui-input-color: #f5f5f5;
+  --header-color: #181818;
+  --send-button-color: mediumturquoise;
+  --send-button-font-color: black;
+  --menu-color: #292929;
+  --on-hover: 0.9;
+  --sent-message-color: #0b93f6;
+  --received-message-color: #e5e5ea;
+  --sent-message-font-color: white;
+  --received-message-font-color: black;
+}
+
+.light-theme:root {
+  --theme: #efeae2;
+  --logomark: url("../pics/logomark-black.png");
+  --background-doodle: url("../pics/doodle.png");
+  --sent-message-color: #d9fdd3;
+  --received-message-color: #67bbff;
+  --sent-message-font-color: black;
+  --received-message-font-color: black;
+}
+
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+html, body {
+  width: auto;
+  height: 100vh;
+  margin: 0;
+  background-color: #282c34;
+}
+
+#logo {
+  content: var(--logomark);
+  width: 15rem;
+  height: 4.5rem;
+  margin: 2rem;
+  transition: all .5s ease-in-out;
+}
+
+#logo:hover {
+  content: var(--logomark-d);
+  cursor: pointer;
+  color: #0b93f6;
+  transition: all .5s ease-in-out;
+}
+
+#logo:active {
+  content: var(--logomark);
+}
+
+#logo::backdrop {
+  content: var(--logomark-d);
+}
+
+.App {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  flex-direction: row-reverse;
+  justify-content: right;
+  text-align: center;
+  background-color: var(--theme);
+  background-image: var(--background-doodle);
+}
+
+.App:nth-child(2) {
+  width: 100%;
+}
+
+
+header {
+  background-color: var(--header-color);
+  height: 8%;
+  min-height: 3.25rem;
+  color: white;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 10;
+  padding: 0.625rem;
+  box-sizing: border-box;
+}
+
+.menu {
+  position: fixed;
+  display: flex;
+  width: 28.6%;
+  height: 91.9vh;
+  left: 0;
+  top: 8%;
+  background-color: var(--menu-color);
+  overflow-y: scroll;
+}
+
+
+.login-content {
+  position: fixed;
+  left: 0;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  top: 8%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(40, 37, 53);
+}
+
+main {
+  position: fixed;
+  right: 0;
+  width: 70%;
+  padding: 0.3rem 0.3rem 0rem 0.3rem;
+  height: 82vh;
+  margin: 5% 0.3rem 0.2rem 0.3rem;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--theme);
+  background-image: var(--background-doodle);
+}
+
+.menu::-webkit-scrollbar,
+main::-webkit-scrollbar {
+  width: 0.25rem;
+}
+
+.menu::-webkit-scrollbar-track,
+main::-webkit-scrollbar-track {
+  background: #ffffff32;
+}
+
+.menu::-webkit-scrollbar-thumb,
+main::-webkit-scrollbar-thumb {
+  background: #f5f5f53d;
+  border-radius: 1rem;
+}
+
+main::-webkit-scrollbar-thumb:hover {
+  background-color: #f5f5f5;
+}
+
+form {
+  position: fixed;
+  right: 0;
+  width: 70.2%;
+  height: 9.5%;
+  bottom: 0;
+  margin: 0;
+  padding: 0.3rem 0.6rem 0 0.3rem;
+  background-color: var(--ui-input-color);
+  align-items: center;
+  display: flex;
+  font-size: 1rem;
+}
+
+form button {
+  width: 20%;
+  height: 80%;
+  margin: 0.4rem;
+  border: 1px solid darkgray;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  color: var(--send-button-font-color);
+  background-color: var(--send-button-color);
+  font-size: 1.25rem;
+}
+
+form button:hover {
+  opacity: var(--on-hover);
+  transition: all .3s ease-in-out;
+}
+
+form button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+form button:active {
+  border: 0;
+}
+
+
+input {
+  width: 100%;
+  height: 80%;
+  font-size: 1.2rem;
+  background-color: white;
+  color: rgb(0, 0, 0);
+  outline: none;
+  border: 1px solid darkgray;
+  margin: 0.4rem;
+  border-radius: 0.3rem;
+  padding: 0 0.625rem;
+}
+
+button {
+  background-color: #282c34; /* Green */
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+}
+
+button:disabled {
+  opacity: 0.5;
+  height: 80%;
+  border-radius: 0.3rem;
+  cursor: not-allowed;
+}
+
+.sign-out {
+  position: absolute;
+  z-index: 10;
+  margin: 1rem;
+  padding: 0.5rem;
+  border-radius: 0.2rem;
+  cursor: pointer;
+}
+
+  .sign-out:hover {
+    opacity: var(--on-hover);
+  }
+
+.txt-label {
+  margin: 0.6rem 3rem 0.6rem 1rem;
+  cursor: pointer;
+}
+
+ul,
+li {
+  text-align: left;
+  list-style: none;
+}
+
+p {
+  max-width: 31.25rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.5rem;
+  padding: 0.625rem 1.25rem;
+  position: relative;
+  color: white;
+  box-shadow: 0 1px 0.5px rgba(11,20,26, .13);
+  text-align: right;
+}
+
+.message {
+  display: flex;
+  align-items: center;
+}
+
+.sent {
+  flex-direction: row-reverse;
+}
+
+.sent p {
+  color: var(--sent-message-font-color);
+  background: var(--sent-message-color);
+  align-self: flex-end;
+  border-radius: 0.4rem 0 0.4rem 0.4rem;
+}
+.received p {
+  color: var(--received-message-font-color);
+  background: var(--received-message-color);
+  text-align: left;
+  border-radius: 0 0.4rem 0.4rem 0.4rem;
+}
+
+.img-users {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin: 0.125rem 0.3125rem;
+}
+
+#google-symbol {
+  display: flex;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin: 0.491rem 0.491rem 0.491rem 1.5rem;
+}
+
+.sign-in {
+  width: 23%;
+  height: 3rem;
+  margin: 0;
+  padding: 0.2rem;
+  border: 1px solid #000;
+  border-radius: 0.1875rem;
+  vertical-align: inherit;
+  outline: none;
+  text-decoration: none;
+  cursor: pointer;
+  overflow: hidden;
+  font: inherit;
+  font-weight: bold;
+  color: #000;
+  font-size: 1rem;
+  background-color: var(--color-bg, #fff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 10rem;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+}
+
+.tail-message-sent {
+  position: relative;
+  bottom: 18.8%;
+  height: auto;
+}
+
+.tail-message-received {
+  position: relative;
+  bottom: 18.8%;
+  height: auto;
+  transform: scaleX(-1);
+}
+
+.blue {
+  position: relative;
+  top: 0;
+  color: var(--sent-message-color);
+}
+
+.white {
+  position: relative;
+  top: 0;
+  color: var(--received-message-color);
+}
+
+@media screen {
+  
+  @media (min-width: 100vw) {
+    main {
+      margin-top: 4%;
+    }
+  }
+
+  @media (max-width: 1286px) {
+    main {
+      margin-top: 5%;
+    }
+  }
+}
